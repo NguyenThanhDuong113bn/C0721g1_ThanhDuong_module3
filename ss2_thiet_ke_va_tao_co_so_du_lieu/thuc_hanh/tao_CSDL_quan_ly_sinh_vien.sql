@@ -1,19 +1,20 @@
-
-CREATE DATABASE QuanLySinhVien;
-USE QuanLySinhVien;
+drop database  if exists bai3_QuanLySinhVien;
+CREATE DATABASE bai3_QuanLySinhVien;
+USE bai3_QuanLySinhVien;
 CREATE TABLE class(
 class_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 class_name VARCHAR(60) NOT NULL,
 start_date DATETIME NOT NULL,
 status BIT
+
 );
 CREATE TABLE student(
 student_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 student_name VARCHAR(30) NOT NULL,
 address VARCHAR(50),
 phone VARCHAR (20),
-status BIT,
-class_id INT NOT NULL,
+status  BIT,
+class_id INT  NOT NULL,
 FOREIGN KEY (class_id) REFERENCES class (class_id)
 );
 CREATE TABLE subject(
