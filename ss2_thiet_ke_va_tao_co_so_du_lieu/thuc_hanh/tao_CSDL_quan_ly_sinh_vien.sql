@@ -35,3 +35,4 @@ CREATE TABLE mark (
     FOREIGN KEY (student_id)
         REFERENCES student (student_id)
 );
+
