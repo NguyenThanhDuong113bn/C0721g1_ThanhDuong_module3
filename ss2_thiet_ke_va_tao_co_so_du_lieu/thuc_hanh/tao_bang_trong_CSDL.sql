@@ -1,33 +1,33 @@
-create database QuanLyDiemThi;
-use QuanLyDiemThi;
-create table Hoc_sinh(
-ma_HS varchar(20) primary key,
-ten_HS varchar(50),
-ngay_sinh datetime,
-lop varchar(20),
-GT varchar(20)
+CREATE DATABASE QuanLyDiemThi;
+USE QuanLyDiemThi;
+CREATE TABLE Hoc_sinh(
+ma_HS VARCHAR(20) PRIMARY KEY,
+ten_HS VARCHAR(50),
+ngay_sinh DATETIME,
+lop VARCHAR(20),
+GT VARCHAR(20)
 );
 
-create table Mon_hoc(
-ma_MH varchar (20) primary key,
-ten_MH varchar(50)
+CREATE TABLE Mon_hoc(
+ma_MH VARCHAR (20) PRIMARY KEY,
+ten_MH VARCHAR(50)
 );
 
-create table Bang_diem(
-ma_HS varchar(20),
-ma_MH varchar(20),
-diem_thi int,
-ngay_KT datetime,
-primary key (ma_HS, ma_MH),
-foreign key(ma_HS) references Hoc_sinh(ma_HS),
-foreign key(ma_MH) references Mon_hoc(ma_MH)
+CREATE TABLE Bang_diem(
+ma_HS VARCHAR(20),
+ma_MH VARCHAR(20),
+diem_thi INT,
+ngay_KT DATETIME,
+PRIMARY KEY (ma_HS, ma_MH),
+FOREIGN KEY(ma_HS) REFERENCES Hoc_sinh(ma_HS),
+FOREIGN KEY(ma_MH) REFERENCES Mon_hoc(ma_MH)
 );
 
-create table Giao_vien(
-ma_GV varchar (20) primary key,
-ten_GV varchar(20),
-so_DT varchar(10)
+CREATE TABLE Giao_vien(
+ma_GV VARCHAR (20) PRIMARY KEY,
+ten_GV VARCHAR(20),
+so_DT VARCHAR(10)
 );
 -- Chỉnh sửa lại bảng môn học bổ sung thêm trường ma_GV là khóa ngoại  của bảng Mon_hoc
-alter table Mon_hoc add ma_GV varchar (20);
-alter table Mon_hoc add constraint FK_ma_GV foreign key (ma_GV) references Giao_vien (ma_GV);
+alter table Mon_hoc add mA_GV vARCHAr (20);
+aLTEr table MON_HOc ADD cONSTRaINT FK_ma_GV fOREiGN KEY (MA_GV) referENCES GiAO_vIen (mA_GV);
