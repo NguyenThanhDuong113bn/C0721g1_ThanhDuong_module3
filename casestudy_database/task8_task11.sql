@@ -38,6 +38,7 @@ là “Diamond” và có địa chỉ là “Vinh” hoặc “Quảng Ngãi”
     dvdk.trang_thai_kha_dung,
     lk.ten_loai_khach,
     kh.dia_chi
+   
 FROM
     dich_vu_DI_KEm dvdk
         JOIN
@@ -51,51 +52,27 @@ FROM
 WHERE
     Kh.id_loai_khAch = 1
         AND (kh.dIA_Chi = 'Quang Ngai'
-        OR kh.dia_chi = 'Vinh');
+        OR kh.dia_chi = 'Vinh') group by id_dich_vu_di_kem;
+	
+
         
- 
-SELECT 
-    hd.id_hop_dong,
-    Dv.id_dich_vu,
-    Hd.ngay_lam_hop_DONG,
-    nV.ho_ten_nhan_vIeN,
-    kh.HO_vA_tEn,
-    kH.so_DT,
-    COUNT(hdct.Id_dIch_vu_di_kem) AS so_luong_dich_VU_DI_kem
-FROM
-    dich_vU dv
-        JOIN
-    hop_dOng hd ON dv.id_diCh_vu = Hd.id_dich_vu
-        JOIN
-    khacH_hang kH ON hD.id_kHACH_Hang = kh.id_khach_hang
-        JOIN
-    nhan_vien nV ON nv.id_nhan_vien = hd.id_NHAn_vien
-        JOIN
-    hop_dong_cHi_tIet hdct ON hdct.id_HOP_dong = hd.id_hop_doNG
-        JOIN
-    Dich_vu_di_kem dvdk ON dvdk.ID_dich_vu_di_kem = hDCt.iD_dich_vu_di_kEm
-WHERE
-    dv.id_dich_vu IN (SELECT 
-            dv.id_dICh_vu
-        FROM
-            dich_vu dv
-                JOIN
-            hop_dOng hd ON dv.id_dicH_vu = hd.id_dich_vu
-        WHERE
-            (QUARTER(HD.ngay_lam_hop_donG) = 4)
-                AND (YEAR(hd.ngay_lam_hop_dong) = 2021))
-        AND dv.id_dich_vu NOT IN (SELECT 
-            dv.id_dich_vu
-        FROM
-            DICh_Vu dv
-                JOIN
-            hoP_DoNG HD ON dv.id_dich_vu = hD.Id_DICH_vu
-        WHERE
-            (QUARTER(HD.ngay_lam_hop_donG) = 1
-                OR QUARTER(hd.ngay_lam_hop_dong) = 2)
-                AND (YEAR(hd.ngaY_lam_hop_dong) = 2021))
-GROUP BY hdct.id_HOP_dong
-HAVING YEAR(HD.NGay_lam_hop_dong) = 2021;
+     
+        
+ /* task 12.Hiển thị thông tin IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu, SoLuongDichVuDikem 
+ (được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách
+ hàng đặt vào 3 tháng cuối năm 2021 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2021 */
+
+select hd.id_hop_dong,nv.ho_ten_nhan_vien as "ten_nhan_vien",kh.ho_va_ten as "ten_khach_hang",kh.so_DT as "so_dien_thoai_khach_hang",
+dv.ten_dich_vu,count(hdct.id_hop_dong) as "so_luong_dich_vu_di_kem",hd.tien_dat_coc
+from hop_dong hd
+join nhan_vien nv on hd.id_nhan_vien = nv.id_nhan_vien
+join khach_hang kh on hd.id_khach_hang = kh.id_khach_hang
+join dich_vu dv on hd.id_dich_vu = dv.id_dich_vu
+join hop_dong_chi_tiet hdct on hd.id_hop_dong = hdct.id_hop_dong 
+where year(hd.ngay_lam_hop_dong)=2021 and month(hd.ngay_lam_hop_dong) in (10,11,12)and hd.id_hop_dong
+ not in (select id_hop_dong
+	from hop_dong hd
+	where month(hd.ngay_lam_hop_dong)between 1 and 6); 
 
 /* task 13 Hiển THị THÔNG Tin các Dịch vụ đi kèM ĐưỢC sử dụng nhiều nhẤT bỞI CÁC KHách hàng đã đặt pHòNg.
 (LƯU Ý LÀ cÓ thể cÓ nhiều dịch VỤ CÓ sỐ LẦN sỬ dụng nhiều như nHaU).*/
@@ -113,4 +90,31 @@ HAVING COUNT(hdct.id_dich_vu_di_KEM) >= ALL (SELECT
     FROM
         hop_dong_chi_tiet hdCT
     GROUP BY hdct.id_dich_VU_di_kEm);
+    
+    /*14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
+Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.*/
+select hd.id_hop_dong, ldv.ten_loai_dich_vu,dvdk.ten_dich_vu_di_kem,count(hdct.id_dich_vu_di_kem) as "so_lan_su_dung"
+from dich_vu_di_kem dvdk
+join hop_dong_chi_tiet hdct on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
+join hop_dong hd on hdct.id_hop_dong = hd.id_dich_vu
+join dich_vu dv on hd.id_dich_vu = dv.id_dich_vu
+join loai_dich_vu ldv on dv.id_loai_dich_vu = ldv.id_loai_dich_vu
+group by hdct.id_dich_vu_di_kem
+having count(hdct.id_dich_vu_di_kem) = 1;
 
+/*	Task 15: Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, DiaChi 
+mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.*/
+select nv.id_nhan_vien,nv.ho_ten_nhan_vien,td.trinh_do,bp.ten_bo_phan,nv.so_DT,nv.dia_chi,count(hd.id_hop_dong) as "so_lan_lam_hop_dong"
+from nhan_vien nv
+join trinh_do td on nv.id_trinh_do = td.id_trinh_do
+join bo_phan bp on nv.id_bo_phan = bp.id_bo_phan
+join hop_dong hd on nv.id_nhan_vien = hd.id_nhan_vien
+where (year(hd.ngay_lam_hop_dong) between 2020 and 2021)
+group by hd.id_nhan_vien
+having count(hd.id_hop_dong) <=3;
+
+/*Task 16:	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.*/
+delete from nhan_vien nv
+where  nv.id_nhan_vien not in (select hd.id_nhan_vien
+	from hop_dong hd
+	where year(hd.ngay_lam_hop_dong) between 2017 and year(curdate()));
