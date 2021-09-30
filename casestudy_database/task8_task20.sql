@@ -114,18 +114,28 @@ group by hd.id_nhan_vien
 having count(hd.id_hop_dong) <=3;
 
 /*Task 16:	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.*/
-set SQL_SAFE_UPDATES=0;
-delete from nhan_vien 
-where id_nhan_vien not in (select id_nhan_vien
-    from(select nv.id_nhan_vien
-        from nhan_vien nv
-        join hop_dong hd ON nv.id_nhan_vien = hd.id_nhan_vien
-        where year(hd.ngay_lam_hop_dong) between 2017 and 2019
-        group by nv.id_nhan_vien
-        having count(hd.id_hop_dong) > 0) as xoa);
-set SQL_SAFE_UPDATES=1;
+SET SQL_SAFE_UPDATES=0;
+DELETE FROM nhan_vien 
+WHERE
+    id_nhan_vien NOT IN (SELECT 
+        id_nhan_vien
+    FROM
+        (SELECT 
+            nv.id_nhan_vien
+        FROM
+            nhan_vien nv
+        JOIN hop_dong hd ON nv.id_nhan_vien = hd.id_nhan_vien
+        
+        WHERE
+            YEAR(hd.ngay_lam_hop_dong) BETWEEN 2017 AND 2019
+        GROUP BY nv.id_nhan_vien
+        HAVING COUNT(hd.id_hop_dong) > 0) AS t);
+SET SQL_SAFE_UPDATES=1;
 
-select * from nhan_vien;
+SELECT 
+    *
+FROM
+    nhan_vien;
      -- 
  /*Task 17:Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond, 
  chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.*/
@@ -149,36 +159,7 @@ select * from khach_hang;
 drop table bang_tam_id_tong_tien;
 
 /*Task 18:Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràng buộc giữa các bảng).*/
-set SQL_SAFE_UPDATES = 0;
-delete from khach_hang 
-where id_khach_hang in (select id_khach_hang
-    from (select kh.id_khach_hang
-    from khach_hang kh
-	join hop_dong hd on hd.id_khach_hang = kh.id_khach_hang
-    where year(hd.ngay_lam_hop_dong) < 2016) as a);
-set SQL_SAFE_UPDATES = 1;
-select * from khach_hang;
-
--- 
-/*Task 19:Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.*/
-create temporary table bang_tam_dich_vu_di_kem (select dvdk.id_dich_vu_di_kem as "id" , count(hdct.id_dich_vu_di_kem) as "so_lan_su_dung"
-            from dich_vu_di_kem dvdk
-            join hop_dong_chi_tiet hdct on dvdk.id_dich_vu_di_kem = hdct.id_dich_vu_di_kem
-            group by hdct.id_dich_vu_di_kem 
-            having so_lan_su_dung > 10);
-update dich_vu_di_kem
-set gia = gia*2
-where dich_vu_di_kem.id_dich_vu_di_kem in (select bang_tam_dich_vu_di_kem.id from bang_tam_dich_vu_di_kem);
-select * from dich_vu_di_kem;
-drop table bang_tam_dich_vu_di_kem;
-
-/*  Task 20:.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống,
- thông tin hiển thị bao gồm ID (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi.*/
- select id_khach_hang as id,ho_va_ten as ho_ten, email, so_DT, ngay_sinh, dia_chi
- from khach_hang
- union all
- select id_nhan_vien as id,ho_ten_nhan_vien ,email, so_DT, ngay_sinh, dia_chi
- from nhan_vien;
- 
- 
- 
+delete from khach_hang kh
+where  kh.id_khach_hang in (select hd.id_khach_hang
+	from hop_dong hd
+	where year(hd.ngay_lam_hop_dong) < 2016);
