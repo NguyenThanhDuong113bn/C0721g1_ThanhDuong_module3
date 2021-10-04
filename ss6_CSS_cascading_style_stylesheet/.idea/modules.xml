@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ss6_CSS_cascading_style_stylesheet.iml" filepath="$PROJECT_DIR$/.idea/ss6_CSS_cascading_style_stylesheet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ss7_thiet_ke_bo_cuc_trang_web/.idea/ss7_thiet_ke_bo_cuc_trang_web.iml" filepath="$PROJECT_DIR$/../ss7_thiet_ke_bo_cuc_trang_web/.idea/ss7_thiet_ke_bo_cuc_trang_web.iml" />
     </modules>
   </component>
 </project>
