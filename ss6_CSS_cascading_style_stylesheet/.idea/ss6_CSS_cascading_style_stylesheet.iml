@@ -6,5 +6,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ss7_thiet_ke_bo_cuc_trang_web" />
     <orderEntry type="module" module-name="ss8_bootstrap_co_ban" />
+    <orderEntry type="module" module-name="ss9_tong_quan_ung_dung_web" />
   </component>
 </module>
