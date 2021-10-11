@@ -2,9 +2,7 @@ package Service;
 
 import Model.Product;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductServiceImpl implements  ProductService {
     private static Map<Integer, Product> productList = new HashMap<>();
@@ -17,31 +15,41 @@ public class ProductServiceImpl implements  ProductService {
     }
     @Override
     public List<Product> findAll() {
-        return null;
+        return new ArrayList<>(productList.values());
     }
 
     @Override
     public void save(Product product) {
+        productList.put(product.getId(),product);
 
     }
 
     @Override
     public void update(int id, Product product) {
+        productList.put(id,product);
 
     }
 
     @Override
     public void remove(int id) {
+     productList.remove(id);
 
     }
 
     @Override
     public List<Product> searchByName(String name) {
-        return null;
+        Set<Product> productSet = new HashSet(productList.values());
+        List<Product> products = new ArrayList<>();
+        for (Product product : productSet) {
+            if (product.getName().contains(name)) {
+                products.add(productList.get(product.getId()));
+            }
+        }
+        return products;
     }
 
     @Override
     public Product findById(int id) {
-        return null;
+        return productList.get(id);
     }
 }

@@ -31,7 +31,7 @@
 </p>
 
 <p>
-    <a href="/product">Back to product list</a>
+    <a href="/products">Back to product list</a>
 </p>
 <form method="post">
     <legend>Product information</legend>

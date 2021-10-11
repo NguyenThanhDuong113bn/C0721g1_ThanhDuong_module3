@@ -24,7 +24,7 @@
 <body>
 <h1>Product details</h1>
 <p>
-    <a href="/product">Back to product list</a>
+    <a href="/products">Back to product list</a>
 </p>
 <table class="table table-striped">
     <thead>

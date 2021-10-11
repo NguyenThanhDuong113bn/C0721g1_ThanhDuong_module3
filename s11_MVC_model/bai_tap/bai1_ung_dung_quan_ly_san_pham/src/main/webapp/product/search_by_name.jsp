@@ -27,7 +27,7 @@
 <h1>Search product by name</h1>
 <c:if test="${empty productList}">
     <h3 style="color: red">No results were found</h3>
-    <p><a href="/product">Back to product list</a></p>
+    <p><a href="/products">Back to product list</a></p>
 </c:if>
 <c:if test="${not empty productList}">
     <p>
@@ -36,7 +36,7 @@
         </c:if>
     </p>
     <p>
-        <a href="/product">Back to product list</a>
+        <a href="/products">Back to product list</a>
     </p>
     <table class="table table-striped">
         <thead>

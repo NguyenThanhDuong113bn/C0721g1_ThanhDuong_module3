@@ -5,6 +5,7 @@
   Time: 2:21 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,10 +23,10 @@
 <body>
 <h1>Product List</h1>
 <p>
-    <a href="/product?action=create">Create new product</a>
+    <a href="/products?action=create">Create new product</a>
 </p>
 <p>
-    <a href="/product?action=search">Search product by name</a>
+    <a href="/products?action=search">Search product by name</a>
 </p>
 <table class="table table-striped">
     <thead>
