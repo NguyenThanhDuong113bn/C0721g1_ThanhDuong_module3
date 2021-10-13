@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="255c16cf-df6a-4d4f-bfe8-05fdee6353ea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/bai_tap.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/controller/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/bean/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/repository/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/repository/UserRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/java/model/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/webapp/jquery/jquery-3.6.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/webapp/user/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/webapp/user/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/webapp/user/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss13_JDBC_Querying_&amp;_Transaction/bai_tap/bai1_user_manager/src/main/webapp/user/view.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\C0721g1_Thanhduong_module3\module3\ss14_Dependency_Management_&amp;_Packaging\thuc_hanh\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1zR0y6zVHLlWJZ1Hn4wK8XICn8Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="255c16cf-df6a-4d4f-bfe8-05fdee6353ea" name="Default Changelist" comment="" />
+      <created>1634095844509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634095844509</updated>
+      <workItem from="1634095851456" duration="264000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="493" y="140" key="FileChooserDialogImpl" timestamp="1634096112488">
+      <screen x="62" y="0" width="1304" height="768" />
+    </state>
+    <state x="493" y="140" key="FileChooserDialogImpl/62.0.1304.768@62.0.1304.768" timestamp="1634096112488" />
+    <state x="96" y="0" key="new project wizard" timestamp="1634096115308">
+      <screen x="62" y="0" width="1304" height="768" />
+    </state>
+    <state x="96" y="0" key="new project wizard/62.0.1304.768@62.0.1304.768" timestamp="1634096115308" />
+  </component>
+</project>

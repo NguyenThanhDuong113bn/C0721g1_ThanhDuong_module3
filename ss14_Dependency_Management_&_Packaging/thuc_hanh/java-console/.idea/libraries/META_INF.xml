@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="META-INF">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../java_console/java_console.jar!/META-INF" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
