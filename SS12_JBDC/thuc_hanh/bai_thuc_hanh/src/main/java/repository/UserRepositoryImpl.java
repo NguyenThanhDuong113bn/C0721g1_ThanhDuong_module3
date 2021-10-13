@@ -9,7 +9,7 @@ import java.util.List;
 public class UserRepositoryImpl implements IUserRepository {
     private String jdbcURL = "jdbc:mysql://localhost:3306/user_management?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "Phantuankiet_1603";
+    private String jdbcPassword = "123456789";
 
     private static final String INSERT_USERS_SQL = "INSERT INTO users (name, email, country) VALUES (?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "SELECT id,name,email,country FROM users WHERE id = ?";
